@@ -62,9 +62,30 @@ function getAndDisplayNewJoke() {
 }
 
 // Function to retrieve a random joke
-function retrieveJoke() {
+//Fetch the API
+//return the JSON with the joke sting
+//feed into the retrieveJoke function
+async function retrieveJoke() {
   const randomIndex = Math.floor(Math.random() * jokes.length);
   return jokes[randomIndex];
+}
+
+async function betterJokes() {
+  const newJokes = await fetch("https://icanhazdadjoke.com/", {
+    headers: {
+      accept: "application/json",
+    },
+  }) 
+  const data = await newJokes.json();
+  console.log(data);
+  
+  
+  console.log(data.joke);
+
+  
+  //const returnJoke = newJokes.json();
+  //const stringJoke = json.stringify(returnJoke)
+  //console.log(stringJoke);
 }
 
 // Function to update the DOM with the provided joke
